@@ -12,10 +12,12 @@ const app = express();
 
 dotenv.config();
 
-const MONGO_URI = process.env.mongoURI;
-const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT || 3001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+console.log(__dirname)
 
 app.use(express.static("uploads"));
 app.use(express.json());
