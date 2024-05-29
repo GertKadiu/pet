@@ -14,10 +14,12 @@ dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 3001;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
-console.log(__dirname)
+// console.log(__dirname)
+
+
 
 app.use(express.static("uploads"));
 app.use(express.json());
@@ -27,6 +29,21 @@ app.use("/api/dogs", UsersRouter);
 app.use("/api/cats", CatRouter);
 app.use("/api/birds", BirdRouter);
 
+const __dirname1 = path.resolve();
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname1, '/task/build')))
+
+  app.get('*' , (req, res) => {
+    res.sendFile(path.resolve(__dirname1, 'task', 'build', 'index.html'))
+  })
+
+} else {
+  app.get('/', (req, res) => {
+  res.send("Api is working successfully")
+})
+
+}
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
