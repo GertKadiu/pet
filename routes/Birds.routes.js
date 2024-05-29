@@ -1,5 +1,7 @@
-import express from "express";
-import { createBirds, deleteBirdById, getBirdById, getBirds, updateBirdById } from "../controllers/Birds.controller.js";
+const express = require('express');
+const { createBirds, deleteBirdById, getBirdById, getBirds, updateBirdById } =  require("../controllers/Birds.controller.js");
+
+
 
 const router = express.Router()
 
@@ -9,4 +11,4 @@ router.put("/updatebirds/:id", updateBirdById)
 router.delete("/deleteBird/:id", deleteBirdById)
 router.get("/:id", getBirdById)
 
-export default router;
+module.exports = router;

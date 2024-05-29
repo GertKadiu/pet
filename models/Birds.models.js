@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+
 
 const BirdsSchema = new mongoose.Schema({
   name: {
@@ -37,4 +38,4 @@ const BirdsSchema = new mongoose.Schema({
 
 const BirdsModel = mongoose.model("Bird", BirdsSchema);
 
-export default BirdsModel;
+module.exports = BirdsModel;

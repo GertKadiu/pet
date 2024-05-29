@@ -1,5 +1,5 @@
-import express from "express";
-import { createDog, deleteDogById, getDogById, getDogs, updateDogsById } from "../controllers/Dogs.controllers.js";
+const express = require('express');
+const { createDog, deleteDogById, getDogById, getDogs, updateDogsById } = require("../controllers/Dogs.controllers")
 
 
 
@@ -11,4 +11,4 @@ router.put("/updatedogs/:id", updateDogsById)
 router.delete("/deleteDog/:id", deleteDogById)
 router.get("/:id", getDogById)
 
-export default router;
+module.exports = router;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const CatsSchema = new mongoose.Schema({
   name: {
@@ -25,4 +25,4 @@ const CatsSchema = new mongoose.Schema({
 
 const CatsModel = mongoose.model("Cats", CatsSchema);
 
-export default CatsModel;
+module.exports = CatsModel;

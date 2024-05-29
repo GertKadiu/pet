@@ -1,6 +1,6 @@
-import BirdsModel from "../models/Birds.models.js";
+const BirdsModel = require('../models/Birds.models')
 
-export const getBirds = async (req, res) => {
+ const getBirds = async (req, res) => {
   try {
     const dogs = await BirdsModel.find();
     res.status(200).json(dogs);
@@ -11,7 +11,7 @@ export const getBirds = async (req, res) => {
 };
 
 
-export const createBirds= async (req, res) => {
+ const createBirds= async (req, res) => {
   const { 
     name,
     family,
@@ -46,7 +46,7 @@ export const createBirds= async (req, res) => {
 };
 
 
-export const getBirdById = async (req, res) => {
+const getBirdById = async (req, res) => {
   try {
     const { id } = req.params;
     const Dog = await BirdsModel.findById(id);
@@ -62,7 +62,7 @@ export const getBirdById = async (req, res) => {
   }
 };
 
-export const updateBirdById = async (req, res) => {
+const updateBirdById = async (req, res) => {
   const { id } = req.params;
   try {
     await BirdsModel.findByIdAndUpdate(
@@ -89,7 +89,7 @@ export const updateBirdById = async (req, res) => {
   }
 };
 
-export const deleteBirdById = (req, res) => {
+const deleteBirdById = (req, res) => {
   const { id } = req.params;
   BirdsModel.findByIdAndDelete(id)
     .then((bird) => {
@@ -101,3 +101,10 @@ export const deleteBirdById = (req, res) => {
     .catch((err) => res.status(500).json({ message: "Failed to delete bird", error: err }));
 };
 
+module.exports = {
+  getBirds,
+  createBirds,
+  getBirdById,
+  updateBirdById,
+  deleteBirdById
+};

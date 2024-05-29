@@ -1,18 +1,19 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import UsersRouter from "./routes/Dogs.routes.js";
-import BirdRouter from "./routes/Birds.routes.js";
-import CatRouter from "./routes/Cats.routess.js";
-import cors from "cors";
-import path from "path";
-import { fileURLToPath } from "url";
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const path = require("path");
+const UsersRouter = require("./routes/Dogs.routes")
+const CatRouter = require("./routes/Cats.routess")
+const BirdRouter = require("./routes/Birds.routes")
+require("dotenv").config();
+
 const app = express();
 
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 3001;
 
 
 app.use(express.json());
@@ -21,8 +22,6 @@ app.use("/api/dogs", UsersRouter);
 app.use("/api/cats", CatRouter);
 app.use("/api/birds", BirdRouter);
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname + "public")));
 
 

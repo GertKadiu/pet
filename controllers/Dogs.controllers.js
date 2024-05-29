@@ -1,5 +1,5 @@
-import DogsModel from "../models/Dogs.models.js";
-export const getDogs = async (req, res) => {
+const DogsModel = require("../models/Dogs.models")
+ const getDogs = async (req, res) => {
   try {
     const dogs = await DogsModel.find();
     res.status(200).json(dogs);
@@ -9,7 +9,7 @@ export const getDogs = async (req, res) => {
   }
 };
 
-export const createDog = async (req, res) => {
+const createDog = async (req, res) => {
   const {
     name,
     breed_group,
@@ -41,7 +41,7 @@ export const createDog = async (req, res) => {
   }
 };
 
-export const getDogById = async (req, res) => {
+ const getDogById = async (req, res) => {
   try {
     const { id } = req.params;
     const Dog = await DogsModel.findById(id);
@@ -57,7 +57,7 @@ export const getDogById = async (req, res) => {
   }
 };
 
-export const updateDogsById = async (req, res) => {
+ const updateDogsById = async (req, res) => {
   const { id } = req.params;
   try {
     await DogsModel.findByIdAndUpdate(
@@ -83,7 +83,7 @@ export const updateDogsById = async (req, res) => {
   }
 };
 
-export const deleteDogById = (req, res) => {
+ const deleteDogById = (req, res) => {
   const { id } = req.params;
   DogsModel.findByIdAndDelete(id)
     .then((dog) => {
@@ -95,4 +95,13 @@ export const deleteDogById = (req, res) => {
     .catch((err) =>
       res.status(500).json({ message: "Failed to delete dog", error: err })
     );
+};
+
+
+module.exports = {
+  getDogs,
+  createDog,
+  getDogById,
+  updateDogsById,
+  deleteDogById
 };

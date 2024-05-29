@@ -1,6 +1,6 @@
-import CatsModel from "../models/Cats.models.js";
+const CatsModel = require('../models/Cats.models')
 
-export const getCats = async (req, res) => {
+ const getCats = async (req, res) => {
   try {
     const dogs = await CatsModel.find();
     res.status(200).json(dogs);
@@ -10,7 +10,7 @@ export const getCats = async (req, res) => {
   }
 };
 
-export const createCat = async (req, res) => {
+ const createCat = async (req, res) => {
   const { name, origin, temperament, colors, description, image } = req.body;
   try {
     const newDog = new CatsModel({
@@ -29,7 +29,7 @@ export const createCat = async (req, res) => {
   }
 };
 
-export const getCatById = async (req, res) => {
+const getCatById = async (req, res) => {
   try {
     const { id } = req.params;
     const Dog = await CatsModel.findById(id);
@@ -45,7 +45,7 @@ export const getCatById = async (req, res) => {
   }
 };
 
-export const updateCatById = async (req, res) => {
+ const updateCatById = async (req, res) => {
   const { id } = req.params;
   try {
     await CatsModel.findByIdAndUpdate(
@@ -68,7 +68,7 @@ export const updateCatById = async (req, res) => {
   }
 };
 
-export const deleteCatById = (req, res) => {
+ const deleteCatById = (req, res) => {
   const { id } = req.params;
   CatsModel.findByIdAndDelete(id)
     .then((cat) => {
@@ -80,4 +80,14 @@ export const deleteCatById = (req, res) => {
     .catch((err) =>
       res.status(500).json({ message: "Failed to delete Cat", error: err })
     );
+};
+
+
+
+module.exports = {
+  getCats,
+  createCat,
+  getCatById,
+  updateCatById,
+  deleteCatById
 };

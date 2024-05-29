@@ -1,7 +1,5 @@
-import express from "express";
-import { createCat, deleteCatById, getCatById, getCats, updateCatById } from "../controllers/Cats.controller.js";
-
-
+const express = require('express');
+const { createCat, deleteCatById, getCatById, getCats, updateCatById } = require("../controllers/Cats.controller")
 
 const router = express.Router()
 
@@ -11,4 +9,4 @@ router.put("/updatecats/:id", updateCatById)
 router.delete("/deleteCat/:id", deleteCatById)
 router.get("/:id", getCatById)
 
-export default router;
+module.exports = router;
