@@ -22,7 +22,7 @@ app.use("/api/dogs", UsersRouter);
 app.use("/api/cats", CatRouter);
 app.use("/api/birds", BirdRouter);
 
-app.use(express.static(path.join(__dirname + "public")));
+app.use(express.static(path.join(__dirname + "build")));
 
 
 app.listen(PORT, () => {
