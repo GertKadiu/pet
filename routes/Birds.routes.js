@@ -1,8 +1,6 @@
 import express from "express";
 import { createBirds, deleteBirdById, getBirdById, getBirds, updateBirdById } from "../controllers/Birds.controller.js";
 
-
-
 const router = express.Router()
 
 router.get("/", getBirds)
