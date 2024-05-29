@@ -21,9 +21,9 @@ const PORT = process.env.PORT || 3001;
 
 
 
-app.use(express.static("uploads"));
+// app.use(express.static("uploads"));
 app.use(express.json());
-app.use(express.static(path.join(__dirname + "public"))); 
+// app.use(express.static(path.join(__dirname + "public"))); 
 app.use(cors());
 app.use("/api/dogs", UsersRouter);
 app.use("/api/cats", CatRouter);
