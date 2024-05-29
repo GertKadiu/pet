@@ -12,7 +12,7 @@ const app = express();
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4001;
 
 
 app.use(express.json());
